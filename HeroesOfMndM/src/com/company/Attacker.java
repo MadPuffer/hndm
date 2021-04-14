@@ -1,8 +1,9 @@
 package com.company;
 
 public class Attacker extends Unit implements DestroyOpponent, StrikeOpponent, BattleCry{
-    public Attacker(int strength, int awareness, int healthPoints) {
-        super(strength, awareness, healthPoints);
+
+    public Attacker(String name, String armyName, int strength, int awareness, int healthPoints) {
+        super(name, armyName, strength, awareness, healthPoints);
     }
 
     public void battleCry() {

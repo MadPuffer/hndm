@@ -1,8 +1,9 @@
 package com.company;
 
 public class Defender extends Unit implements StrikeOpponent, HealUnit, BattleCry {
-    public Defender(int strength, int awareness, int healthPoints) {
-        super(strength, awareness, healthPoints);
+
+    public Defender(String name, String armyName, int strength, int awareness, int healthPoints) {
+        super(name, armyName, strength, awareness, healthPoints);
     }
 
     public void battleCry() {

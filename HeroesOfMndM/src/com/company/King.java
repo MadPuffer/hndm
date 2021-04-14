@@ -3,8 +3,12 @@ package com.company;
 import java.util.Random;
 
 public class King extends Unit implements DestroyOpponent, BattleCry {
-    public King(int strength, int awareness, int healthPoints) {
-        super(strength, awareness, healthPoints);
+
+    private String teamName;
+
+    public King(String name, String armyName, int strength, int awareness, int healthPoints, String teamName) {
+        super(name, armyName, strength, awareness, healthPoints);
+        this.teamName = teamName;
     }
 
     public void battleCry() {
@@ -30,10 +34,15 @@ public class King extends Unit implements DestroyOpponent, BattleCry {
         String yourTurn = turns[new Random().nextInt(3)];
         String opponentsTurn = turns[new Random().nextInt(3)];
 
-        if (yourTurn.equals("Rock") && opponentsTurn.equals("Scissors")) {
+        if (yourTurn.equals(opponentsTurn)) {
+            return playRockPaperScissors();
+
+        } else if (yourTurn.equals("Rock") && opponentsTurn.equals("Scissors")) {
             return true;
+
         } else if (yourTurn.equals("Scissors") && opponentsTurn.equals("Paper")) {
             return true;
+
         } else return yourTurn.equals("Paper") && opponentsTurn.equals("Rock");
     }
 
@@ -45,5 +54,13 @@ public class King extends Unit implements DestroyOpponent, BattleCry {
         King enemyKing = (King) obj;
         return (enemyKing.getStrength() + enemyKing.getAwareness() + enemyKing.getHealthPoints()) ==
                 (this.getStrength() + this.getAwareness() + this.getHealthPoints());
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
     }
 }

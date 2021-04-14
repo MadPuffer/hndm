@@ -1,14 +1,15 @@
 package com.company;
 
 public class Courier extends Unit implements DeliverMessage, BattleCry {
-    public Courier(int strength, int awareness, int healthPoints) {
-        super(strength, awareness, healthPoints);
+
+    public Courier(String name, String armyName, int strength, int awareness, int healthPoints) {
+        super(name, armyName, strength, awareness, healthPoints);
     }
 
     private final int _HEAL_POINTS = 20;
 
     public void battleCry() {
-
+        System.out.println("ЗА КОРОЛЯ!");
     }
 
     public void deliverMessage(Unit originUnit, Unit destinationUnit) {
