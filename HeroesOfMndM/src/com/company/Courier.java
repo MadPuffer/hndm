@@ -26,4 +26,8 @@ public class Courier extends Unit implements DeliverMessage, BattleCry {
         originUnit.setHealthPoints(originUnit.getHealthPoints() + this._HEAL_POINTS);
         destinationUnit.setHealthPoints(destinationUnit.getHealthPoints() + this._HEAL_POINTS);
     }
+
+    public void showAbilities() {
+        System.out.println("Доступные действия:\n1. Передать сообщение\n2. Боевой клич");
+    }
 }

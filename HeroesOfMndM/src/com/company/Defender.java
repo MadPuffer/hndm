@@ -17,4 +17,8 @@ public class Defender extends Unit implements StrikeOpponent, HealUnit, BattleCr
     public void strikeOpponent(Unit unit) {
         unit.takeHit(unit.getStrength() / 10);
     }
+
+    public void showAbilities() {
+        System.out.println("Доступные действия:\n1. Аттаковать противника\n2. Вылечить союзника\n3. Боевой клич");
+    }
 }

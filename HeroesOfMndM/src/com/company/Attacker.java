@@ -30,4 +30,8 @@ public class Attacker extends Unit implements DestroyOpponent, StrikeOpponent, B
             this.takeHit(this.getStrength());
         }
     }
+
+    public void showAbilities() {
+        System.out.println("Доступные действия:\n1. Аттаковать противника\n2. Уничтожить противника\n3. Боевой клич");
+    }
 }

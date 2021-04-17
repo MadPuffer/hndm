@@ -46,6 +46,10 @@ public class King extends Unit implements DestroyOpponent, BattleCry {
         } else return yourTurn.equals("Paper") && opponentsTurn.equals("Rock");
     }
 
+    public void showAbilities() {
+        System.out.println("Доступные действия:\n1. Уничтожить противника\n2. Боевой клич");
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (!(obj instanceof King)) {
