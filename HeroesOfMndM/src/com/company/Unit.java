@@ -24,9 +24,9 @@ public abstract class Unit implements BattleCry {
     public void die() {
         if (this.isAlive) {
             this.isAlive = false;
-            System.out.println("ПоМеР");
+            System.out.printf("%s ПоМеР\n", this.getName());
         } else {
-            System.out.println("Уже мертв");
+            System.out.printf("%s уже мертв\n", this.getName());
         }
     }
 

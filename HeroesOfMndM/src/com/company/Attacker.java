@@ -13,21 +13,25 @@ public class Attacker extends Unit implements DestroyOpponent, StrikeOpponent, B
     public void destroyOpponent(Unit unit) {
         if (unit.getHealthPoints() <= this.getStrength()) {
             unit.die();
+            System.out.printf("%s уничтожен!\n", unit.getName());
         } else {
             unit.setHealthPoints(unit.getHealthPoints() - this.getStrength());
             this.die();
-            System.out.println("СЕППУКУ");
+            System.out.printf("%s совершил сеппуку\n", this.getName());
         }
     }
 
     public void strikeOpponent(Unit unit) {
         if (unit.getAwareness() < this.getAwareness()) {
             unit.takeHit(this.getStrength());
+            System.out.printf("%s получил по лицу от %s\n", unit.getName(), this.getName());
         } else if (unit.getAwareness() > this.getAwareness()) {
             this.takeHit(this.getStrength());
+            System.out.printf("%s получил по лицу от %s\n", this.getName(), unit.getName());
         } else {
             unit.takeHit(this.getStrength());
             this.takeHit(this.getStrength());
+            System.out.printf("%s и %s получили по лицу\n", unit.getName(), this.getName());
         }
     }
 

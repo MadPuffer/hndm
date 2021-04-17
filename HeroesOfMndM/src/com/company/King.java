@@ -20,8 +20,10 @@ public class King extends Unit implements DestroyOpponent, BattleCry {
             unit.die();
         } else {
             if (playRockPaperScissors()) {
+                System.out.printf("%s победил в камень-ножницы-бумага и уничтожил оппонента\n", this.getName());
                 unit.die();
             } else {
+                System.out.printf("%s проиграл в камень-ножницы-бумагу и был уничтожен оппонентом\n", this.getName());
                 this.die();
             }
             System.out.println("F");

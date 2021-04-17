@@ -16,6 +16,7 @@ public class Courier extends Unit implements DeliverMessage, BattleCry {
         if (originUnit != destinationUnit) {
             destinationUnit.setAwareness(originUnit.getAwareness() + destinationUnit.getAwareness());
             originUnit.setAwareness(0);
+            System.out.printf("%s передал сообщение %sу\n", originUnit.getName(), destinationUnit.getName());
 
             healUnit(originUnit, destinationUnit);
 
@@ -25,6 +26,7 @@ public class Courier extends Unit implements DeliverMessage, BattleCry {
     private void healUnit(Unit originUnit, Unit destinationUnit) {
         originUnit.setHealthPoints(originUnit.getHealthPoints() + this._HEAL_POINTS);
         destinationUnit.setHealthPoints(destinationUnit.getHealthPoints() + this._HEAL_POINTS);
+        System.out.printf("%s и %s были вылечены\n", originUnit.getName(), destinationUnit.getName());
     }
 
     public void showAbilities() {
