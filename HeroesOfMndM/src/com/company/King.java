@@ -4,11 +4,8 @@ import java.util.Random;
 
 public class King extends Unit implements DestroyOpponent, BattleCry {
 
-    private String teamName;
-
     public King(String name, String armyName, int strength, int awareness, int healthPoints, String teamName) {
         super(name, armyName, strength, awareness, healthPoints);
-        this.teamName = teamName;
     }
 
     public void battleCry() {
@@ -62,11 +59,4 @@ public class King extends Unit implements DestroyOpponent, BattleCry {
                 (this.getStrength() + this.getAwareness() + this.getHealthPoints());
     }
 
-    public String getTeamName() {
-        return teamName;
-    }
-
-    public void setTeamName(String teamName) {
-        this.teamName = teamName;
-    }
 }

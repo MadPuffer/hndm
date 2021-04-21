@@ -1,12 +1,14 @@
 package com.company;
 
 public class Team {
-    King king;
-    Attacker attacker1;
-    Attacker attacker2;
-    Defender defender1;
-    Defender defender2;
-    Courier courier;
+    private King king;
+    private Attacker attacker1;
+    private Attacker attacker2;
+    private Defender defender1;
+    private Defender defender2;
+    private Courier courier;
+
+    private String teamName;
 
     public Team(King king, Attacker attacker1, Attacker attacker2, Defender defender1, Defender defender2, Courier courier) {
         this.king = king;
@@ -15,6 +17,18 @@ public class Team {
         this.defender1 = defender1;
         this.defender2 = defender2;
         this.courier = courier;
+    }
+
+    public Unit[] getTeam() {
+        return new Unit[]{king, attacker1, attacker2, defender1, defender2, courier};
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
     }
 
     public King getKing() {

@@ -6,12 +6,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Unit[] nilfgaardArmy = new Unit[6];
-        Unit[] northKingdomsArmy = new Unit[6];
-
         // creating armies
-        nilfgaardArmy[0] = new King("Эмгыр Вар Эмрейс", "Нильфгаард", 60, 50, 100, "Черное солнце");
-        northKingdomsArmy[0] = new King("Радовид", "Королевства Севера", 60, 40, 100, "Северный ветер");
+        King nilfgaardKing = new King("Эмгыр Вар Эмрейс", "Нильфгаард", 60, 50, 100, "Черное солнце");
+        King northKingdomsKing = new King("Радовид", "Королевства Севера", 60, 40, 100, "Северный ветер");
 
         Attacker nilfgaardAttacker1 = new Attacker("Раинфарн", "Нильфгаард", 30, 30, 60);
         Attacker nilfgaardAttacker2 = new Attacker("Мортейзен", "Нильфгаард", 30, 30, 60);
@@ -19,28 +16,21 @@ public class Main {
         Defender nilfgaardDefender2 = new Defender("Кагыр", "Нильфгаард", 20, 50, 40);
         Courier nilfgaardCourier = new Courier("Ваттье Де Ридо", "Нильфгаард", 15, 80, 30);
 
-        nilfgaardArmy[1] = nilfgaardAttacker1;
-        nilfgaardArmy[2] = nilfgaardAttacker2;
-        nilfgaardArmy[3] = nilfgaardDefender1;
-        nilfgaardArmy[4] = nilfgaardDefender2;
-        nilfgaardArmy[5] = nilfgaardCourier;
-
         Attacker northKingdomsAttacker1 = new Attacker("Бьянка", "Королевства Севера", 30, 30, 60);
         Attacker northKingdomsAttacker2 = new Attacker("Геральт", "Королевства Севера", 80, 50, 70);
         Defender northKingdomsDefender1 = new Defender("Ян Натались", "Королевства Севера", 20, 50, 40);
         Defender northKingdomsDefender2 = new Defender("Эстерад", "Королевства Севера", 20, 50, 40);
         Courier northKingdomsCourier = new Courier("Сигизмунд Дийкстра", "Королевства Севера", 15, 80, 30);
 
-        northKingdomsArmy[1] = northKingdomsAttacker1;
-        northKingdomsArmy[2] = northKingdomsAttacker2;
-        northKingdomsArmy[3] = northKingdomsDefender1;
-        northKingdomsArmy[4] = northKingdomsDefender2;
-        northKingdomsArmy[5] = northKingdomsCourier;
+        Team nilfgaardArmy = new Team(nilfgaardKing, nilfgaardAttacker1, nilfgaardAttacker2, nilfgaardDefender1,
+                nilfgaardDefender2, nilfgaardCourier);
+        Team northKingdomsArmy = new Team(northKingdomsKing, northKingdomsAttacker1, northKingdomsAttacker2,
+                northKingdomsDefender1, northKingdomsDefender2, northKingdomsCourier);
 
         showArmyIntel(nilfgaardArmy);
         showArmyIntel(northKingdomsArmy);
 
-        if (nilfgaardArmy[0].equals(northKingdomsArmy[0])) {
+        if (nilfgaardArmy.getKing().equals(northKingdomsArmy.getKing())) {
             System.out.println("Короли стоили друг друга и оказались настолько круты, что никакой войны не случилось");
         } else {
 
