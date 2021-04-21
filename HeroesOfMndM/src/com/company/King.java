@@ -34,18 +34,18 @@ public class King extends Unit implements DestroyOpponent, BattleCry {
         String[] turns = {"Rock", "Scissors", "Paper"};
 
         String yourTurn = turns[new Random().nextInt(3)];
-        String opponentsTurn = turns[new Random().nextInt(3)];
+        String opponentTurn = turns[new Random().nextInt(3)];
 
-        if (yourTurn.equals(opponentsTurn)) {
+        if (yourTurn.equals(opponentTurn)) {
             return playRockPaperScissors();
 
-        } else if (yourTurn.equals("Rock") && opponentsTurn.equals("Scissors")) {
+        } else if (yourTurn.equals("Rock") && opponentTurn.equals("Scissors")) {
             return true;
 
-        } else if (yourTurn.equals("Scissors") && opponentsTurn.equals("Paper")) {
+        } else if (yourTurn.equals("Scissors") && opponentTurn.equals("Paper")) {
             return true;
 
-        } else return yourTurn.equals("Paper") && opponentsTurn.equals("Rock");
+        } else return yourTurn.equals("Paper") && opponentTurn.equals("Rock");
     }
 
     public void showAbilities() {

@@ -11,7 +11,7 @@ public class Defender extends Unit implements StrikeOpponent, HealUnit, BattleCr
     }
 
     public void healUnit(Unit unit) {
-        unit.setHealthPoints(this.getHealthPoints() + this.getStrength());
+        unit.getHealed(this.getHealthPoints() + this.getStrength());
         System.out.printf("%s вылечил %sа\n", this.getName(), unit.getName());
     }
 

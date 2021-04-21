@@ -24,8 +24,8 @@ public class Courier extends Unit implements DeliverMessage, BattleCry {
     }
 
     private void healUnit(Unit originUnit, Unit destinationUnit) {
-        originUnit.setHealthPoints(originUnit.getHealthPoints() + this._HEAL_POINTS);
-        destinationUnit.setHealthPoints(destinationUnit.getHealthPoints() + this._HEAL_POINTS);
+        originUnit.getHealed(this._HEAL_POINTS);
+        destinationUnit.getHealed(this._HEAL_POINTS);
         System.out.printf("%s и %s были вылечены\n", originUnit.getName(), destinationUnit.getName());
     }
 

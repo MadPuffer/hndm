@@ -21,10 +21,15 @@ public abstract class Unit implements BattleCry {
         this.healthPoints -= damage;
     }
 
+    public void getHealed(int healPoints) {
+        this.healthPoints += healPoints;
+    }
+
     public void die() {
         if (this.isAlive) {
             this.isAlive = false;
             System.out.printf("%s ПоМеР\n", this.getName());
+            this.setHealthPoints(0);
         } else {
             System.out.printf("%s уже мертв\n", this.getName());
         }

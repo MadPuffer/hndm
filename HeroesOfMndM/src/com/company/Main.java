@@ -67,6 +67,11 @@ public class Main {
                     King king = (King) army1[0];
                     System.out.printf("Команда %s победила!\n", king.getTeamName());
                     break;
+
+                } else if (army1[0].getHealthPoints() <= 0) {
+                    King king = (King) army2[0];
+                    System.out.printf("Команда %s победила!\n", king.getTeamName());
+                    break;
                 }
 
 
@@ -78,7 +83,12 @@ public class Main {
                     King king = (King) army2[0];
                     System.out.printf("Команда %s победила!\n", king.getTeamName());
                     break;
-                }
+                } else if (army2[0].getHealthPoints() <= 0) {
+                    King king = (King) army1[0];
+                    System.out.printf("Команда %s победила!\n", king.getTeamName());
+                    break;
+            }
+
             }
         }
     }
@@ -93,19 +103,13 @@ public class Main {
 
         System.out.printf("Ход команды %s\n", armyKing.getTeamName());
 
-//        System.out.println("Ваша армия:");
-//        for (int i = 0; i < army.length; i++) {
-//            System.out.printf("%d. %s\n", i + 1, army[i].toString());
-//        }
-
-//        System.out.println("Армия противника:");
-//        for (int i = 0; i < army.length; i++) {
-//            System.out.printf("%d. %s\n", i + 1, opponentArmy[i].toString());
-//        }
-
         while (teamUnitIndex < 0 || teamUnitIndex > army.length - 1) {
             System.out.print("\nВыберите номер дружественного юнита, которым хотите ходить: ");
             teamUnitIndex = new Scanner(System.in).nextInt() - 1;
+            if (army[teamUnitIndex].getHealthPoints() <= 0) {
+                System.out.println("Этот юнит мертв");
+                teamUnitIndex = -1;
+            }
         }
 
         if (army[teamUnitIndex] instanceof Courier) {
@@ -124,12 +128,20 @@ public class Main {
                     while (originUnitIndex < 0 || originUnitIndex > army.length - 1 || originUnitIndex == teamUnitIndex) {
                         System.out.print("\nВыберите номер первого дружественного юнита, с которым вы хотите взаимодействовать: ");
                         originUnitIndex = new Scanner(System.in).nextInt();
+                        if (army[originUnitIndex].getHealthPoints() <= 0) {
+                            System.out.println("Этот юнит мертв");
+                            originUnitIndex = -1;
+                        }
                     }
 
                     while (destinationUnitIndex < 0 || destinationUnitIndex > army.length - 1
                             || destinationUnitIndex == teamUnitIndex || destinationUnitIndex == originUnitIndex) {
                         System.out.print("\nВыберите номер второго дружественного юнита, с которым вы хотите взаимодействовать: ");
                         destinationUnitIndex = new Scanner(System.in).nextInt() - 1;
+                        if (army[destinationUnitIndex].getHealthPoints() <= 0) {
+                            System.out.println("Этот юнит мертв");
+                            destinationUnitIndex = -1;
+                        }
                     }
 
                     courier.deliverMessage(army[originUnitIndex], army[destinationUnitIndex]);
@@ -154,6 +166,10 @@ public class Main {
                     while (opponentUnitIndex < 0 || opponentUnitIndex > army.length - 1) {
                         System.out.print("\nВыберите номер вражеского юнита, с которым вы хотите взаимодействовать: ");
                         opponentUnitIndex = new Scanner(System.in).nextInt() - 1;
+                        if (opponentArmy[opponentUnitIndex].getHealthPoints() <= 0) {
+                            System.out.println("Этот юнит мертв");
+                            opponentUnitIndex = -1;
+                        }
                     }
                     attacker.strikeOpponent(opponentArmy[opponentUnitIndex]);
                     break;
@@ -161,6 +177,10 @@ public class Main {
                     while (opponentUnitIndex < 0 || opponentUnitIndex > army.length - 1) {
                         System.out.print("\nВыберите номер вражеского юнита, с которым вы хотите взаимодействовать: ");
                         opponentUnitIndex = new Scanner(System.in).nextInt() - 1;
+                        if (opponentArmy[opponentUnitIndex].getHealthPoints() <= 0) {
+                            System.out.println("Этот юнит мертв");
+                            opponentUnitIndex = -1;
+                        }
                     }
                     attacker.destroyOpponent(opponentArmy[opponentUnitIndex]);
                     break;
@@ -185,15 +205,23 @@ public class Main {
                     while (opponentUnitIndex < 0 || opponentUnitIndex > army.length - 1) {
                         System.out.print("\nВыберите номер вражеского юнита, с которым вы хотите взаимодействовать: ");
                         opponentUnitIndex = new Scanner(System.in).nextInt() - 1;
+                        if (opponentArmy[opponentUnitIndex].getHealthPoints() <= 0) {
+                            System.out.println("Этот юнит мертв");
+                            opponentUnitIndex = -1;
+                        }
                     }
                     defender.strikeOpponent(opponentArmy[opponentUnitIndex]);
                     break;
                 case 2:
-                    while (opponentUnitIndex < 0 || opponentUnitIndex > army.length - 1) {
+                    while (teamUnitIndex < 0 || teamUnitIndex > army.length - 1) {
                         System.out.print("\nВыберите номер дружественного юнита, с которым вы хотите взаимодействовать: ");
-                        opponentUnitIndex = new Scanner(System.in).nextInt() - 1;
+                        teamUnitIndex = new Scanner(System.in).nextInt() - 1;
+                        if (army[teamUnitIndex].getHealthPoints() <= 0) {
+                            System.out.println("Этот юнит мертв");
+                            teamUnitIndex = -1;
+                        }
                     }
-                    defender.healUnit(opponentArmy[opponentUnitIndex]);
+                    defender.healUnit(army[teamUnitIndex]);
                     break;
                 case 3:
                     defender.battleCry();
@@ -215,6 +243,10 @@ public class Main {
                     while (opponentUnitIndex < 0 || opponentUnitIndex > army.length - 1) {
                         System.out.print("\nВыберите номер вражеского юнита, с которым вы хотите взаимодействовать: ");
                         opponentUnitIndex = new Scanner(System.in).nextInt() - 1;
+                        if (opponentArmy[opponentUnitIndex].getHealthPoints() <= 0) {
+                            System.out.println("Этот юнит мертв");
+                            opponentUnitIndex = -1;
+                        }
                     }
                     king.destroyOpponent(opponentArmy[opponentUnitIndex]);
                     break;
