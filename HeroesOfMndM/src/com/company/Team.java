@@ -8,6 +8,7 @@ public class Team {
     private Defender defender2;
     private Courier courier;
 
+
     private String teamName;
 
     public Team(King king, Attacker attacker1, Attacker attacker2, Defender defender1, Defender defender2, Courier courier) {

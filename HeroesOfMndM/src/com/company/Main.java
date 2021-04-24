@@ -44,38 +44,37 @@ public class Main {
 
     }
 
-    public static void playGameParty(Unit[] army1, Unit[] army2) {
+    public static void playGameParty(Team team1, Team team2) {
         boolean isArmy1Turn = true;
+
+        Unit[] army1 = team1.getTeam();
+        Unit[] army2 = team2.getTeam();
 
 
         while (true) {
             if (isArmy1Turn) {
                 isArmy1Turn = false;
-                makeGameTurn(army1, army2);
+                makeGameTurn(team1, team2);
 
                 if (army2[0].getHealthPoints() <= 0) {
-                    King king = (King) army1[0];
-                    System.out.printf("Команда %s победила!\n", king.getTeamName());
+                    System.out.printf("Команда %s победила!\n", team1.getTeamName());
                     break;
 
                 } else if (army1[0].getHealthPoints() <= 0) {
-                    King king = (King) army2[0];
-                    System.out.printf("Команда %s победила!\n", king.getTeamName());
+                    System.out.printf("Команда %s победила!\n", team2.getTeamName());
                     break;
                 }
 
 
             } else {
                 isArmy1Turn = true;
-                makeGameTurn(army2, army1);
+                makeGameTurn(team2, team1);
 
                 if (army1[0].getHealthPoints() <= 0) {
-                    King king = (King) army2[0];
-                    System.out.printf("Команда %s победила!\n", king.getTeamName());
+                    System.out.printf("Команда %s победила!\n", team2.getTeamName());
                     break;
                 } else if (army2[0].getHealthPoints() <= 0) {
-                    King king = (King) army1[0];
-                    System.out.printf("Команда %s победила!\n", king.getTeamName());
+                    System.out.printf("Команда %s победила!\n", team1.getTeamName());
                     break;
             }
 
@@ -83,15 +82,17 @@ public class Main {
         }
     }
 
-    public static void makeGameTurn(Unit[] army, Unit[] opponentArmy) {
+    public static void makeGameTurn(Team team, Team opponentTeam) {
         int teamUnitIndex = -1;
         int opponentUnitIndex = -1;
         int originUnitIndex = -1;
         int destinationUnitIndex = -1;
 
-        King armyKing = (King) army[0];
+        Unit[] army = team.getTeam();
+        Unit[] opponentArmy = opponentTeam.getTeam();
 
-        System.out.printf("Ход команды %s\n", armyKing.getTeamName());
+
+        System.out.printf("Ход команды %s\n", team.getTeamName());
 
         while (teamUnitIndex < 0 || teamUnitIndex > army.length - 1) {
             System.out.print("\nВыберите номер дружественного юнита, которым хотите ходить: ");
@@ -249,25 +250,22 @@ public class Main {
 
     }
 
-    public static void showArmyIntel(Unit[] army) {
-        if (army[0] instanceof King) {
-            King king = (King) army[0];
-            System.out.printf("Команда %s\n", king.getTeamName());
-        }
+    public static void showArmyIntel(Team army) {
+        System.out.printf("Команда %s\n", army.getTeamName());
 
-        for (Unit unit : army
+        for (Unit unit : army.getTeam()
         ) {
             System.out.println(unit.toString());
         }
     }
 
-    public static void unitedBattleCry(Unit[] army1, Unit[] army2) {
-        for (Unit unit : army1
+    public static void unitedBattleCry(Team army1, Team army2) {
+        for (Unit unit : army1.getTeam()
         ) {
             unit.battleCry();
         }
 
-        for (Unit unit : army2
+        for (Unit unit : army2.getTeam()
         ) {
             unit.battleCry();
         }
